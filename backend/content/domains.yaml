@@ -1,0 +1,41 @@
+# Plain-English text for each health domain and status (content, not numbers).
+cardiovascular:
+  title: Cardiovascular
+  covers: Heart rate, heart rate variability, blood pressure, blood oxygen
+  meaning:
+    GREEN: Your heart and circulation readings are in line with your own pre-flight normal.
+    AMBER: One or more heart/circulation readings have been off your normal for several days. Not an emergency - follow the steps and re-check.
+    RED: A heart/circulation reading crossed a safety limit or is far from your normal. Act now and inform the flight surgeon.
+    UNKNOWN: No recent heart/circulation data.
+behavioral:
+  title: Behavioral & Cognitive
+  covers: Sleep, mood, fatigue, reaction time
+  meaning:
+    GREEN: Your sleep, mood and alertness match your own pre-flight normal.
+    AMBER: Your sleep or alertness has been worse than your normal for several days. This raises error risk on demanding tasks.
+    RED: Your alertness is far below your normal. Avoid critical tasks until re-tested and inform the flight surgeon.
+    UNKNOWN: No recent check-in. Complete today's check-in.
+immune:
+  title: Immune
+  covers: Symptoms, onboard lab results
+  meaning:
+    GREEN: No persistent symptoms and lab values within your normal.
+    AMBER: Symptoms or lab values have been off your normal repeatedly. Monitor closely.
+    RED: A lab value crossed a safety limit or symptoms are strongly elevated. Inform the flight surgeon.
+    UNKNOWN: No recent symptom log or lab data.
+bone:
+  title: Bone & Muscle
+  covers: Estimated bone loss (model), exercise adherence
+  meaning:
+    GREEN: Estimated bone loss is within the expected range and exercise is on target.
+    AMBER: Exercise has been below target for several days or estimated bone loss is growing. Increase resistance exercise.
+    RED: Estimated bone loss is high or exercise has nearly stopped. Discuss with the flight surgeon.
+    UNKNOWN: No exercise data.
+radiation:
+  title: Radiation
+  covers: Cumulative dose vs career limit, solar particle events
+  meaning:
+    GREEN: Cumulative dose is well below the career limit and no solar particle event is active.
+    AMBER: Cumulative dose is approaching the career limit. Minimise time in low-shielding areas.
+    RED: A solar particle event is active or dose is near the limit. Go to the shielded area now.
+    UNKNOWN: No dose data.
