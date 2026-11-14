@@ -210,3 +210,8 @@ pvt:
   max_interval_ms: {value: 10000, unit: ms, source_title: "", source_url: "", status: ASSUMPTION, todo: "See min_interval_ms."}
   demo_duration_s: {value: 60,    unit: s,  source_title: "", source_url: "", status: ASSUMPTION, todo: "Demo mode length (per brief)."}
   standard_duration_s: {value: 180, unit: s, source_title: "", source_url: "", status: ASSUMPTION, todo: "Standard mode length (per brief). Note: lapse counts scale with duration; baseline lapses were simulated for roughly this length."}
+
+space_weather:
+  lookback_days: {value: 30,   unit: days, source_title: "", source_url: "", status: ASSUMPTION, todo: "How far back to ask NASA DONKI for FLR/SEP events. Design choice."}
+  cache_ttl_s:   {value: 1800, unit: s,    source_title: "", source_url: "", status: ASSUMPTION, todo: "Use cached feed younger than this (DEMO_KEY has a low rate limit). Design choice."}
+  timeout_s:     {value: 4,    unit: s,    source_title: "", source_url: "", status: ASSUMPTION, todo: "Network timeout before falling back to cache/bundled sample. Design choice."}

@@ -1,0 +1,15 @@
+id: bone_amber
+domain: bone
+status: AMBER
+title: "Bone & Muscle AMBER: get exercise back on target"
+review_status: DRAFT
+todo: "Content drafted by the team, NOT medically reviewed. Must be reviewed by a flight surgeon / NASA HRP source before any real use. Add source_title/source_url when verified."
+source_title: ""
+source_url: ""
+start: n1
+nodes:
+  n1: {type: action, text: "Add a resistance exercise session today to get back to your daily target.", next: n2}
+  n2: {type: question, text: "Is something blocking your exercise (equipment fault, schedule conflict)?", options: [{label: "Yes", next: n3}, {label: "No", next: n4}]}
+  n3: {type: action, text: "Report the blocker to the commander or ground and agree a workaround.", next: n4}
+  n4: {type: action, text: "Follow your nutrition plan (protein, calcium, vitamin D) as prescribed.", next: end}
+  end: {type: end, text: "Check the exercise adherence number again tomorrow."}

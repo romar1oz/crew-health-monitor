@@ -44,7 +44,7 @@ export function renderCards(container, assessment, thr, { onProtocol } = {}) {
       h("p", { class: "muted", style: "margin:2px 0" }, ""),
       h("p", { class: "meaning" }, d.meaning || ""),
       flagged.length ? h("ul", { class: "triggers" }, flagged.map((t) => h("li", {},
-        `${t.label}: ${fmt(t.value)} ${t.unit} `, badge(t.provenance), " ", t.watch ? h("em", {}, `(watching: ${t.days_persisting}/${t.persistence_needed} days)`) : "", h("br"), h("span", { class: "muted" }, t.reason)))) : null,
+        t.unit ? `${t.label}: ${fmt(t.value)} ${t.unit} ` : `${t.label} `, badge(t.provenance), " ", t.watch ? h("em", {}, `(watching: ${t.days_persisting}/${t.persistence_needed} days)`) : "", h("br"), h("span", { class: "muted" }, t.reason)))) : null,
       d.protocol_id ? h("div", { class: "act" }, h("strong", {}, "What to do now"),
         h("button", { class: "btn", onclick: () => onProtocol?.(d.protocol_id, d) }, "Open action protocol")) : null,
       h("details", { class: "why" }, h("summary", {}, "Why?"),

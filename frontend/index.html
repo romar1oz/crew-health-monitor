@@ -14,11 +14,15 @@
       <label class="crewpick">Crew member
         <select id="crew-select"></select>
       </label>
+      <label class="crewpick">Mission profile
+        <select id="profile-select"></select>
+      </label>
       <span id="mission-info" class="muted"></span>
       <span class="badge badge-sim" title="All health data in this demo is generated, not real">SIMULATED DATA</span>
     </div>
   </header>
   <div id="banner" class="banner" hidden role="status"></div>
+  <div id="alert" class="alert-red" hidden role="alert"></div>
 
   <main id="app">
     <section class="toolbar">
@@ -28,6 +32,12 @@
 
     <h2>Health status</h2>
     <section id="cards" class="cards" aria-live="polite"></section>
+
+    <h2>Radiation <span class="badge badge-MODEL-ESTIMATED" id="rad-badge">MODEL-ESTIMATED</span></h2>
+    <section id="radiation" class="panel"></section>
+
+    <h2>Downlink to Earth</h2>
+    <section id="downlink" class="panel"></section>
 
     <h2>Live vitals <span class="badge badge-MEASURED">MEASURED</span> <span class="badge badge-sim">SIMULATED</span></h2>
     <section class="vitals">
@@ -45,6 +55,7 @@
     </footer>
   </main>
 
+  <dialog id="protocol-dialog" aria-labelledby="pr-title"></dialog>
   <dialog id="checkin-dialog" aria-labelledby="ci-title"></dialog>
 
   <script src="vendor/chart.umd.min.js"></script>

@@ -1,0 +1,16 @@
+id: behavioral_amber
+domain: behavioral
+status: AMBER
+title: "Behavioral AMBER: protect performance, re-test tomorrow"
+review_status: DRAFT
+todo: "Content drafted by the team, NOT medically reviewed. Must be reviewed by a flight surgeon / NASA HRP source before any real use. Add source_title/source_url when verified."
+source_title: ""
+source_url: ""
+start: n1
+nodes:
+  n1: {type: question, text: "Is today a high-risk task day (EVA, docking, robotics, medical procedure)?", options: [{label: "Yes", next: n2}, {label: "No", next: n3}]}
+  n2: {type: action, text: "Ask the commander or ground to move or share the critical task today. Use a checklist and have a crewmate verify each step.", next: n3}
+  n3: {type: action, text: "Sleep hygiene tonight: fixed lights-out time, dim lights and no screens for 60 minutes before sleep, keep noise low.", next: n4}
+  n4: {type: action, text: "Adjust workload: take a 10-minute break every 2 hours and postpone non-urgent tasks.", next: n5}
+  n5: {type: action, text: "Repeat the check-in and reaction test tomorrow.", next: end}
+  end: {type: end, text: "Done for today. If this stays AMBER for 3 more days, include it in your next summary for the flight surgeon."}

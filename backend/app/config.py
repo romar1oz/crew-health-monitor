@@ -52,3 +52,16 @@ def load_thresholds() -> dict:
 @lru_cache
 def load_domain_text() -> dict:
     return yaml.safe_load((CONTENT_DIR / "domains.yaml").read_text())
+
+
+def load_env_file() -> None:
+    """Minimal .env reader (KEY=VALUE lines) so we need no extra dependency."""
+    import os
+    p = BACKEND_DIR.parent / ".env"
+    if not p.exists():
+        return
+    for line in p.read_text().splitlines():
+        line = line.strip()
+        if line and not line.startswith("#") and "=" in line:
+            k, _, val = line.partition("=")
+            os.environ.setdefault(k.strip(), val.strip().strip('"').strip("'"))

@@ -1,0 +1,15 @@
+id: immune_amber
+domain: immune
+status: AMBER
+title: "Immune AMBER: monitor symptoms and labs"
+review_status: DRAFT
+todo: "Content drafted by the team, NOT medically reviewed. Must be reviewed by a flight surgeon / NASA HRP source before any real use. Add source_title/source_url when verified."
+source_title: ""
+source_url: ""
+start: n1
+nodes:
+  n1: {type: question, text: "Do you have a fever or chills?", options: [{label: "Yes", next: n2}, {label: "No", next: n3}]}
+  n2: {type: action, text: "Limit close contact with crewmates, wear a mask if available, and clean shared surfaces you touch.", next: n3}
+  n3: {type: action, text: "Log symptoms every day and keep hydrated and rested.", next: n4}
+  n4: {type: action, text: "Enter your next onboard lab result when it is due.", next: end}
+  end: {type: end, text: "If this stays AMBER for 3 more days, include it in your next summary for the flight surgeon."}

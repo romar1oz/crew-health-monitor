@@ -1,0 +1,13 @@
+id: bone_red
+domain: bone
+status: RED
+title: "Bone & Muscle RED: estimated loss high or exercise stopped"
+review_status: DRAFT
+todo: "Content drafted by the team, NOT medically reviewed. Must be reviewed by a flight surgeon / NASA HRP source before any real use. Add source_title/source_url when verified."
+source_title: ""
+source_url: ""
+start: n1
+nodes:
+  n1: {type: action, text: "Prioritise resistance exercise at the next opportunity.", next: n2}
+  n2: {type: action, text: "Prepare a summary for the flight surgeon to discuss countermeasures.", ui: downlink, next: end}
+  end: {type: end, text: "Estimated bone loss is a model calculation, not a measurement. Ask the flight surgeon about a measured check."}

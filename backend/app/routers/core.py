@@ -1,4 +1,5 @@
 from fastapi import APIRouter, Depends, HTTPException
+from pydantic import BaseModel
 from sqlmodel import Session, select
 
 from ..config import load_thresholds
@@ -31,7 +32,25 @@ def get_assessment(crew_id: str, session: Session = Depends(get_session)):
 
 @router.get("/mission")
 def get_mission(session: Session = Depends(get_session)):
-    return mission_state(session)
+    st, th = mission_state(session), load_thresholds()
+    return {"profile": st.profile, "mission_day": st.mission_day, "spe_active": st.spe_active,
+            "profiles": [{"id": k, "label": m["label"], "one_way_delay_s": m["one_way_delay_s"]["value"],
+                          "daily_dose_msv": m["daily_dose_msv"]["value"]} for k, m in th["missions"].items()]}
+
+
+class ProfileIn(BaseModel):
+    profile: str
+
+
+@router.post("/mission-profile")
+def set_mission_profile(body: ProfileIn, session: Session = Depends(get_session)):
+    if body.profile not in load_thresholds()["missions"]:
+        raise HTTPException(422, "Unknown mission profile")
+    st = mission_state(session)
+    st.profile = body.profile
+    session.add(st)
+    session.commit()
+    return get_mission(session)
 
 
 @router.get("/thresholds")

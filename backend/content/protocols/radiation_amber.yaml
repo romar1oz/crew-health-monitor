@@ -1,0 +1,13 @@
+id: radiation_amber
+domain: radiation
+status: AMBER
+title: "Radiation AMBER: dose approaching the career limit"
+review_status: DRAFT
+todo: "Content drafted by the team, NOT medically reviewed. Must be reviewed by a flight surgeon / NASA HRP source before any real use. Add source_title/source_url when verified."
+source_title: ""
+source_url: ""
+start: n1
+nodes:
+  n1: {type: action, text: "Minimise time in low-shielding areas. Sleep in the best-shielded location available.", next: n2}
+  n2: {type: action, text: "Review upcoming EVA and activity plans with the commander or ground.", next: end}
+  end: {type: end, text: "Check the dose counter again tomorrow."}
