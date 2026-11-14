@@ -27,3 +27,11 @@ def test_metric_schema_and_sim_ranges_consistent():
             assert key in m, f"{name} missing {key}"
         assert m["provenance"] in {"MEASURED", "SELF-REPORTED", "LAB-ENTERED", "MODEL-ESTIMATED"}
         assert m["sim_min"]["value"] <= m["sim_mean"]["value"] <= m["sim_max"]["value"], name
+
+
+def test_sources_md_is_up_to_date():
+    """SOURCES.md must list every configured value (regenerate with scripts/gen_sources.py)."""
+    from pathlib import Path
+    text = (Path(__file__).resolve().parents[2] / "SOURCES.md").read_text()
+    missing = [k for k, _ in iter_entries(TH) if f"`{k}`" not in text]
+    assert not missing, f"Run scripts/gen_sources.py; missing: {missing[:5]}"

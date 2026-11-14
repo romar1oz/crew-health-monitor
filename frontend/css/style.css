@@ -130,3 +130,4 @@ body:has(#story) main { padding-bottom: 160px; }
 .spotlight { box-shadow: 0 0 0 4px var(--accent), 0 0 36px rgba(90,176,255,.7) !important; scroll-margin: 120px; transition: box-shadow .3s; }
 dialog { z-index: 60; }
 dialog[open]:not(:modal) { position: fixed; top: 8vh; margin: 0 auto; box-shadow: 0 20px 60px rgba(0,0,0,.8); }
+.pvt-area.go .muted { color: #00210e; font-weight: 800; }

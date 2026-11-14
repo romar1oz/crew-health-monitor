@@ -84,4 +84,4 @@ Risk note: if any dependency lacks a Python 3.14 wheel (unlikely with current py
 - [x] Phase 2: check-in wizard, PVT, status cards, "Why?"
 - [x] Phase 3: protocols, radiation + DONKI, downlink queue
 - [x] Phase 4: demo scenario, fallback mode, polish
-- [ ] Phase 5: docs, screenshots, Render deploy
+- [x] Phase 5: docs, screenshots, render.yaml (deploy itself needs your Render account)

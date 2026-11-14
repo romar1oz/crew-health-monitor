@@ -1,0 +1,14 @@
+# Render Blueprint: one free web service; FastAPI serves both the API and the static frontend.
+# Python version comes from .python-version. SQLite lives on the instance's temporary disk
+# and is re-seeded with SIMULATED data on every start (fine for a demo).
+services:
+  - type: web
+    name: crewcheck
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: cd backend && uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /api/health
+    envVars:
+      - key: NASA_API_KEY
+        sync: false   # set in the Render dashboard; DEMO_KEY is used if empty
