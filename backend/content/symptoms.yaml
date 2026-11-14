@@ -1,0 +1,12 @@
+# Symptom checklist shown in the check-in wizard (content file, editable without code changes).
+symptoms:
+  - {id: headache,       label: Headache}
+  - {id: congestion,     label: Nasal congestion}
+  - {id: skin_rash,      label: Skin rash or irritation}
+  - {id: eye_irritation, label: Eye irritation or vision change}
+  - {id: nausea,         label: Nausea}
+  - {id: back_pain,      label: Back pain}
+  - {id: dizziness,      label: Dizziness}
+  - {id: palpitations,   label: Palpitations / racing heart}
+  - {id: cough_throat,   label: Cough or sore throat}
+  - {id: fever_chills,   label: Fever or chills}

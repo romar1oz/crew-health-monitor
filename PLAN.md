@@ -81,7 +81,7 @@ Risk note: if any dependency lacks a Python 3.14 wheel (unlikely with current py
 ## Phase checklist
 - [x] Phase 0: git, LICENSE, venv, FastAPI skeleton + UI shell, /api/health
 - [x] Phase 1: thresholds.yaml, models, baseline engine, rules + pytest
-- [ ] Phase 2: check-in wizard, PVT, status cards, "Why?"
+- [x] Phase 2: check-in wizard, PVT, status cards, "Why?"
 - [ ] Phase 3: protocols, radiation + DONKI, downlink queue
 - [ ] Phase 4: demo scenario, fallback mode, polish
 - [ ] Phase 5: docs, screenshots, Render deploy

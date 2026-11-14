@@ -8,7 +8,7 @@ from sqlmodel import Session
 
 from .config import load_thresholds
 from .db import get_engine, init_db
-from .routers import core
+from .routers import checkins, core
 from .seed import seed_if_empty
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -33,6 +33,7 @@ def health() -> dict:
 
 
 app.include_router(core.router)
+app.include_router(checkins.router)
 
 # Mounted last so /api routes take priority. html=True serves index.html at "/".
 app.mount("/", StaticFiles(directory=FRONTEND_DIR, html=True), name="frontend")

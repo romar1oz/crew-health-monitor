@@ -202,3 +202,11 @@ missions:
 
 demo:
   time_acceleration: {value: 60, unit: x, source_title: "", source_url: "", status: ASSUMPTION, todo: "Not a physical value: demo speed-up for comms countdown. Always disclosed in UI."}
+
+pvt:
+  lapse_ms:        {value: 500,   unit: ms, source_title: "", source_url: "", status: ASSUMPTION, todo: "Lead: Basner & Dinges 2011 (Sleep) define lapse as RT > 500 ms. Verify."}
+  min_valid_rt_ms: {value: 100,   unit: ms, source_title: "", source_url: "", status: ASSUMPTION, todo: "Responses faster than this count as false starts. Verify against PVT literature."}
+  min_interval_ms: {value: 2000,  unit: ms, source_title: "", source_url: "", status: ASSUMPTION, todo: "Inter-stimulus interval 2-10 s per brief. Verify."}
+  max_interval_ms: {value: 10000, unit: ms, source_title: "", source_url: "", status: ASSUMPTION, todo: "See min_interval_ms."}
+  demo_duration_s: {value: 60,    unit: s,  source_title: "", source_url: "", status: ASSUMPTION, todo: "Demo mode length (per brief)."}
+  standard_duration_s: {value: 180, unit: s, source_title: "", source_url: "", status: ASSUMPTION, todo: "Standard mode length (per brief). Note: lapse counts scale with duration; baseline lapses were simulated for roughly this length."}

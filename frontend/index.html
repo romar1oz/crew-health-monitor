@@ -7,13 +7,47 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+  <a class="skip" href="#cards">Skip to status cards</a>
   <header class="topbar">
     <h1>CrewCheck <span class="sub">Onboard crew self-assessment</span></h1>
-    <span class="badge badge-sim" title="All health data in this demo is generated, not real">SIMULATED DATA</span>
+    <div class="topright">
+      <label class="crewpick">Crew member
+        <select id="crew-select"></select>
+      </label>
+      <span id="mission-info" class="muted"></span>
+      <span class="badge badge-sim" title="All health data in this demo is generated, not real">SIMULATED DATA</span>
+    </div>
   </header>
+  <div id="banner" class="banner" hidden role="status"></div>
+
   <main id="app">
-    <p class="muted">System online. Checking backend… <span id="health">…</span></p>
+    <section class="toolbar">
+      <button id="btn-checkin" class="btn primary big">Start daily check-in (~3 min)</button>
+      <p class="muted" id="persistence-note"></p>
+    </section>
+
+    <h2>Health status</h2>
+    <section id="cards" class="cards" aria-live="polite"></section>
+
+    <h2>Live vitals <span class="badge badge-MEASURED">MEASURED</span> <span class="badge badge-sim">SIMULATED</span></h2>
+    <section class="vitals">
+      <div id="vital-tiles" class="tiles"></div>
+      <div class="chartbox"><canvas id="vitals-chart" aria-label="Live heart rate chart" role="img"></canvas></div>
+    </section>
+
+    <footer class="muted legend">
+      <strong>Data labels:</strong>
+      <span class="badge badge-MEASURED">MEASURED</span> wearable sensor ·
+      <span class="badge badge-SELF">SELF-REPORTED</span> your check-in ·
+      <span class="badge badge-LAB">LAB-ENTERED</span> typed-in lab result ·
+      <span class="badge badge-MODEL">MODEL-ESTIMATED</span> calculated projection.
+      CrewCheck is a decision-support demo, not a medical device.
+    </footer>
   </main>
+
+  <dialog id="checkin-dialog" aria-labelledby="ci-title"></dialog>
+
+  <script src="vendor/chart.umd.min.js"></script>
   <script type="module" src="js/main.js"></script>
 </body>
 </html>
