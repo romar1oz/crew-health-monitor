@@ -1,0 +1,19 @@
+{
+ "status": "GREEN",
+ "protocol_id": null,
+ "provenance": "MODEL-ESTIMATED",
+ "formula": "cumulative dose = mission_day \u00d7 daily_dose (mission profile) + \u03a3 solar event doses",
+ "mission_profile": "mars_transit",
+ "mission_day": 120,
+ "daily_dose_msv": 1.8,
+ "cumulative_dose_msv": 216.0,
+ "limit_msv": 600,
+ "fraction": 0.36,
+ "amber_at_msv": 300.0,
+ "red_at_msv": 480.0,
+ "days_to_limit": 213,
+ "spe_active": false,
+ "event_doses_msv": [],
+ "events": [],
+ "simulated_data": true
+}

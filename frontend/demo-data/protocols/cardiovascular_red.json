@@ -1,0 +1,38 @@
+{
+ "id": "cardiovascular_red",
+ "domain": "cardiovascular",
+ "status": "RED",
+ "title": "Cardiovascular RED: a reading crossed a safety limit",
+ "review_status": "DRAFT",
+ "todo": "Content drafted by the team, NOT medically reviewed. Must be reviewed by a flight surgeon / NASA HRP source before any real use. Add source_title/source_url when verified.",
+ "source_title": "",
+ "source_url": "",
+ "start": "n1",
+ "nodes": {
+  "n1": {
+   "type": "action",
+   "text": "Stop strenuous activity and sit or lie down.",
+   "next": "n2"
+  },
+  "n2": {
+   "type": "action",
+   "text": "Alert a crewmate or the onboard medical officer.",
+   "next": "n3"
+  },
+  "n3": {
+   "type": "action",
+   "text": "Repeat the measurement after 5 minutes with the sensor re-seated.",
+   "next": "n4"
+  },
+  "n4": {
+   "type": "action",
+   "text": "Prepare a summary for the flight surgeon and request an urgent consult.",
+   "ui": "downlink",
+   "next": "end"
+  },
+  "end": {
+   "type": "end",
+   "text": "Avoid exercise and EVA until cleared by the flight surgeon."
+  }
+ }
+}

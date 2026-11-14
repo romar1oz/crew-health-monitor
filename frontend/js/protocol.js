@@ -2,7 +2,7 @@ import { api, postJson } from "./api.js";
 import { h } from "./dom.js";
 
 // Walks a decision-tree protocol (loaded from the backend YAML). Each completed action is logged.
-export async function openProtocol({ crewId, protocolId, onDownlink }) {
+export async function openProtocol({ crewId, protocolId, onDownlink, modal = true }) {
   const dlg = document.getElementById("protocol-dialog");
   const [p, logged] = await Promise.all([api(`/api/protocols/${protocolId}`), api(`/api/actions/${crewId}`)]);
   const doneBefore = new Set(logged.filter((a) => a.protocol_id === protocolId).map((a) => a.step_id));
@@ -30,5 +30,6 @@ export async function openProtocol({ crewId, protocolId, onDownlink }) {
     dlg.replaceChildren(...body);
     dlg.querySelector(".node-now + .row button, .nav button")?.focus();
   }
-  render(); dlg.showModal();
+  if (dlg.open) dlg.close();
+  render(); modal ? dlg.showModal() : dlg.show();  // non-modal in demo mode so the story bar stays clickable
 }

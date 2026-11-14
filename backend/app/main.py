@@ -8,7 +8,7 @@ from sqlmodel import Session
 
 from .config import load_env_file, load_thresholds
 from .db import get_engine, init_db
-from .routers import checkins, core, downlink, protocols, radiation
+from .routers import checkins, core, downlink, protocols, radiation, scenario
 from .seed import seed_if_empty
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -35,7 +35,7 @@ def health() -> dict:
 
 app.include_router(core.router)
 app.include_router(checkins.router)
-for _r in (protocols, radiation, downlink):
+for _r in (protocols, radiation, downlink, scenario):
     app.include_router(_r.router)
 
 # Mounted last so /api routes take priority. html=True serves index.html at "/".

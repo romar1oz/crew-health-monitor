@@ -1,0 +1,14 @@
+{
+  "name": "mars_day120",
+  "title": "Mars transit, mission day 120",
+  "description": "SIMULATED story: three nights of poor sleep and a slower reaction time for the commander -> Behavioral AMBER. A solar particle event is then triggered from the UI (demo step).",
+  "profile": "mars_transit",
+  "mission_day": 120,
+  "crew_id": "c1",
+  "deviations": [
+    {"metric": "sleep_hours", "days_before_today": [2, 1, 0], "z": -2.4,
+     "why": "Expressed as SD from the crew member's OWN baseline, so the story works for any baseline. Below the RED level (3 SD) on purpose."},
+    {"metric": "pvt_mean_rt", "days_before_today": [2, 1, 0], "z": 2.5,
+     "why": "Slower reaction time on the same three days."}
+  ]
+}

@@ -1,0 +1,28 @@
+{
+ "status": "RED",
+ "protocol_id": "radiation_red",
+ "provenance": "MODEL-ESTIMATED",
+ "formula": "cumulative dose = mission_day \u00d7 daily_dose (mission profile) + \u03a3 solar event doses",
+ "mission_profile": "mars_transit",
+ "mission_day": 120,
+ "daily_dose_msv": 1.8,
+ "cumulative_dose_msv": 226.0,
+ "limit_msv": 600,
+ "fraction": 0.377,
+ "amber_at_msv": 300.0,
+ "red_at_msv": 480.0,
+ "days_to_limit": 208,
+ "spe_active": true,
+ "event_doses_msv": [
+  10.0
+ ],
+ "events": [
+  {
+   "mission_day": 120,
+   "dose_msv": 10.0,
+   "kind": "SEP",
+   "note": "Simulated SPE (demo control)"
+  }
+ ],
+ "simulated_data": true
+}

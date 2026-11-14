@@ -1,0 +1,47 @@
+{
+ "id": "behavioral_red",
+ "domain": "behavioral",
+ "status": "RED",
+ "title": "Behavioral RED: alertness far below your normal",
+ "review_status": "DRAFT",
+ "todo": "Content drafted by the team, NOT medically reviewed. Must be reviewed by a flight surgeon / NASA HRP source before any real use. Add source_title/source_url when verified.",
+ "source_title": "",
+ "source_url": "",
+ "start": "n1",
+ "nodes": {
+  "n1": {
+   "type": "question",
+   "text": "Are you scheduled for a safety-critical task in the next 6 hours?",
+   "options": [
+    {
+     "label": "Yes",
+     "next": "n2"
+    },
+    {
+     "label": "No",
+     "next": "n3"
+    }
+   ]
+  },
+  "n2": {
+   "type": "action",
+   "text": "Hand the task to a crewmate or postpone it until you have re-tested within your normal range.",
+   "next": "n3"
+  },
+  "n3": {
+   "type": "action",
+   "text": "Rest: take a nap of up to 20 minutes, then repeat the reaction test.",
+   "next": "n4"
+  },
+  "n4": {
+   "type": "action",
+   "text": "Prepare a summary for the flight surgeon at the next comm window.",
+   "ui": "downlink",
+   "next": "end"
+  },
+  "end": {
+   "type": "end",
+   "text": "Avoid critical tasks until a re-test is back near your baseline."
+  }
+ }
+}

@@ -9,7 +9,8 @@ from sqlmodel import Session, delete, select
 from .config import load_thresholds
 from .engine.baseline import compute_baseline
 from .engine.rules import v
-from .models import Baseline, CrewMember, MissionState, Observation
+from .models import (ActionLog, Baseline, CheckIn, CrewMember, DownlinkItem, MissionState, Observation,
+                     RadiationEvent)
 
 # Fictional crew - not real people.
 CREW = [
@@ -35,7 +36,7 @@ def personal_params(rng: random.Random, cfg: dict) -> tuple[float, float]:
 def seed(session: Session, mission_day: int = 120, profile: str = "mars_transit", rnd_seed: int = 42) -> None:
     th = load_thresholds()
     rng = random.Random(rnd_seed)
-    for tbl in (Observation, Baseline, CrewMember, MissionState):
+    for tbl in (ActionLog, CheckIn, DownlinkItem, RadiationEvent, Observation, Baseline, CrewMember, MissionState):
         session.exec(delete(tbl))
     session.add(MissionState(id=1, profile=profile, mission_day=mission_day))
     baseline_days = int(v(th["global"]["baseline_days"]))

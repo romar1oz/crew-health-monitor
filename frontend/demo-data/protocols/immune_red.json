@@ -1,0 +1,33 @@
+{
+ "id": "immune_red",
+ "domain": "immune",
+ "status": "RED",
+ "title": "Immune RED: lab value or symptoms past a safety limit",
+ "review_status": "DRAFT",
+ "todo": "Content drafted by the team, NOT medically reviewed. Must be reviewed by a flight surgeon / NASA HRP source before any real use. Add source_title/source_url when verified.",
+ "source_title": "",
+ "source_url": "",
+ "start": "n1",
+ "nodes": {
+  "n1": {
+   "type": "action",
+   "text": "Tell the onboard medical officer or a crewmate.",
+   "next": "n2"
+  },
+  "n2": {
+   "type": "action",
+   "text": "Limit contact with others and clean shared surfaces.",
+   "next": "n3"
+  },
+  "n3": {
+   "type": "action",
+   "text": "Prepare a summary for the flight surgeon and request an urgent consult.",
+   "ui": "downlink",
+   "next": "end"
+  },
+  "end": {
+   "type": "end",
+   "text": "Follow the flight surgeon's guidance before returning to normal duties."
+  }
+ }
+}

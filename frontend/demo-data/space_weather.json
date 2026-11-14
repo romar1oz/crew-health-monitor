@@ -1,0 +1,34 @@
+{
+ "note": "BUNDLED SAMPLE for offline use. These are illustrative placeholder events, NOT real current space weather.",
+ "fetched_at": null,
+ "events": [
+  {
+   "kind": "SEP",
+   "id": "SAMPLE-SEP-1",
+   "time": "2026-01-01T00:00Z",
+   "label": "Solar energetic particle (SEP) event",
+   "detail": "",
+   "link": null,
+   "sample": true
+  },
+  {
+   "kind": "FLR",
+   "id": "SAMPLE-FLR-2",
+   "time": "2025-12-30T12:00Z",
+   "label": "Solar flare, class M1.0",
+   "detail": "",
+   "link": null,
+   "sample": true
+  },
+  {
+   "kind": "FLR",
+   "id": "SAMPLE-FLR-1",
+   "time": "2025-12-28T06:00Z",
+   "label": "Solar flare, class C5.0",
+   "detail": "",
+   "link": null,
+   "sample": true
+  }
+ ],
+ "source": "bundled_sample"
+}

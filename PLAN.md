@@ -83,5 +83,5 @@ Risk note: if any dependency lacks a Python 3.14 wheel (unlikely with current py
 - [x] Phase 1: thresholds.yaml, models, baseline engine, rules + pytest
 - [x] Phase 2: check-in wizard, PVT, status cards, "Why?"
 - [x] Phase 3: protocols, radiation + DONKI, downlink queue
-- [ ] Phase 4: demo scenario, fallback mode, polish
+- [x] Phase 4: demo scenario, fallback mode, polish
 - [ ] Phase 5: docs, screenshots, Render deploy

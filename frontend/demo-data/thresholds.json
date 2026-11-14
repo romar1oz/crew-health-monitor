@@ -1,0 +1,931 @@
+{
+ "global": {
+  "baseline_days": {
+   "value": 14,
+   "unit": "days",
+   "source_title": "",
+   "source_url": "",
+   "status": "ASSUMPTION",
+   "todo": "Design choice from challenge brief (14-day pre-flight baseline). Confirm."
+  },
+  "persistence_days": {
+   "value": 3,
+   "unit": "days",
+   "source_title": "",
+   "source_url": "",
+   "status": "ASSUMPTION",
+   "todo": "Design choice to reduce false alarms. Find literature on alert persistence / alarm fatigue."
+  },
+  "z_amber": {
+   "value": 2.0,
+   "unit": "SD",
+   "source_title": "",
+   "source_url": "",
+   "status": "ASSUMPTION",
+   "todo": "Design choice (deviation from own baseline). Look for personalized-baseline / statistical process control references."
+  },
+  "z_red": {
+   "value": 3.0,
+   "unit": "SD",
+   "source_title": "",
+   "source_url": "",
+   "status": "ASSUMPTION",
+   "todo": "Design choice. Same as z_amber."
+  }
+ },
+ "metrics": {
+  "resting_hr": {
+   "label": "Resting heart rate",
+   "domain": "cardiovascular",
+   "provenance": "MEASURED",
+   "worse_when": "high",
+   "sim_mean": {
+    "value": 62,
+    "unit": "bpm",
+    "source_title": "",
+    "source_url": "",
+    "status": "ASSUMPTION",
+    "todo": "Typical healthy adult resting HR; find population reference."
+   },
+   "sim_sd": {
+    "value": 4,
+    "unit": "bpm",
+    "source_title": "",
+    "source_url": "",
+    "status": "ASSUMPTION",
+    "todo": "Day-to-day variability of resting HR; find reference."
+   },
+   "min_sd": {
+    "value": 2,
+    "unit": "bpm",
+    "source_title": "",
+    "source_url": "",
+    "status": "ASSUMPTION",
+    "todo": "Floor on baseline SD to avoid over-sensitive z-scores. Design choice."
+   },
+   "sim_min": {
+    "value": 40,
+    "unit": "bpm",
+    "source_title": "",
+    "source_url": "",
+    "status": "ASSUMPTION",
+    "todo": "Plausible lower bound for generator."
+   },
+   "sim_max": {
+    "value": 120,
+    "unit": "bpm",
+    "source_title": "",
+    "source_url": "",
+    "status": "ASSUMPTION",
+    "todo": "Plausible upper bound for generator."
+   },
+   "abs_red_above": {
+    "value": 110,
+    "unit": "bpm",
+    "source_title": "",
+    "source_url": "",
+    "status": "ASSUMPTION",
+    "todo": "Resting tachycardia safety limit; ask flight-surgeon guidance / NASA-STD-3001."
+   }
+  },
+  "hrv_rmssd": {
+   "label": "Heart rate variability (RMSSD)",
+   "domain": "cardiovascular",
+   "provenance": "MEASURED",
+   "worse_when": "low",
+   "sim_mean": {
+    "value": 45,
+    "unit": "ms",
+    "source_title": "",
+    "source_url": "",
+    "status": "ASSUMPTION",
+    "todo": "Typical adult RMSSD; find normative HRV reference."
+   },
+   "sim_sd": {
+    "value": 8,
+    "unit": "ms",
+    "source_title": "",
+    "source_url": "",
+    "status": "ASSUMPTION",
+    "todo": "Day-to-day RMSSD variability."
+   },
+   "min_sd": {
+    "value": 3,
+    "unit": "ms",
+    "source_title": "",
+    "source_url": "",
+    "status": "ASSUMPTION",
+    "todo": "Design choice."
+   },
+   "sim_min": {
+    "value": 10,
+    "unit": "ms",
+    "source_title": "",
+    "source_url": "",
+    "status": "ASSUMPTION",
+    "todo": "Generator bound."
+   },
+   "sim_max": {
+    "value": 120,
+    "unit": "ms",
+    "source_title": "",
+    "source_url": "",
+    "status": "ASSUMPTION",
+    "todo": "Generator bound."
+   }
+  },
+  "systolic_bp": {
+   "label": "Systolic blood pressure",
+   "domain": "cardiovascular",
+   "provenance": "MEASURED",
+   "worse_when": "high",
+   "sim_mean": {
+    "value": 118,
+    "unit": "mmHg",
+    "source_title": "",
+    "source_url": "",
+    "status": "ASSUMPTION",
+    "todo": "Typical adult systolic BP."
+   },
+   "sim_sd": {
+    "value": 7,
+    "unit": "mmHg",
+    "source_title": "",
+    "source_url": "",
+    "status": "ASSUMPTION",
+    "todo": "Day-to-day BP variability."
+   },
+   "min_sd": {
+    "value": 3,
+    "unit": "mmHg",
+    "source_title": "",
+    "source_url": "",
+    "status": "ASSUMPTION",
+    "todo": "Design choice."
+   },
+   "sim_min": {
+    "value": 85,
+    "unit": "mmHg",
+    "source_title": "",
+    "source_url": "",
+    "status": "ASSUMPTION",
+    "todo": "Generator bound."
+   },
+   "sim_max": {
+    "value": 200,
+    "unit": "mmHg",
+    "source_title": "",
+    "source_url": "",
+    "status": "ASSUMPTION",
+    "todo": "Generator bound."
+   },
+   "abs_red_above": {
+    "value": 160,
+    "unit": "mmHg",
+    "source_title": "",
+    "source_url": "",
+    "status": "ASSUMPTION",
+    "todo": "Hypertension stage cut-off; check AHA/ACC guideline and NASA-STD-3001."
+   }
+  },
+  "spo2": {
+   "label": "Blood oxygen saturation (SpO2)",
+   "domain": "cardiovascular",
+   "provenance": "MEASURED",
+   "worse_when": "low",
+   "sim_mean": {
+    "value": 98,
+    "unit": "%",
+    "source_title": "",
+    "source_url": "",
+    "status": "ASSUMPTION",
+    "todo": "Typical healthy SpO2."
+   },
+   "sim_sd": {
+    "value": 0.8,
+    "unit": "%",
+    "source_title": "",
+    "source_url": "",
+    "status": "ASSUMPTION",
+    "todo": "Variability of pulse-oximeter SpO2."
+   },
+   "min_sd": {
+    "value": 0.5,
+    "unit": "%",
+    "source_title": "",
+    "source_url": "",
+    "status": "ASSUMPTION",
+    "todo": "Design choice."
+   },
+   "sim_min": {
+    "value": 85,
+    "unit": "%",
+    "source_title": "",
+    "source_url": "",
+    "status": "ASSUMPTION",
+    "todo": "Generator bound."
+   },
+   "sim_max": {
+    "value": 100,
+    "unit": "%",
+    "source_title": "",
+    "source_url": "",
+    "status": "ASSUMPTION",
+    "todo": "Physical maximum."
+   },
+   "abs_red_below": {
+    "value": 92,
+    "unit": "%",
+    "source_title": "",
+    "source_url": "",
+    "status": "ASSUMPTION",
+    "todo": "Hypoxemia cut-off; find clinical guideline."
+   }
+  },
+  "sleep_hours": {
+   "label": "Sleep duration",
+   "domain": "behavioral",
+   "provenance": "SELF-REPORTED",
+   "worse_when": "low",
+   "sim_mean": {
+    "value": 7.0,
+    "unit": "h",
+    "source_title": "",
+    "source_url": "",
+    "status": "ASSUMPTION",
+    "todo": "Pre-flight sleep; ISS crews reportedly sleep ~6 h in flight (Barger et al. 2014, Lancet Neurol) - verify."
+   },
+   "sim_sd": {
+    "value": 0.5,
+    "unit": "h",
+    "source_title": "",
+    "source_url": "",
+    "status": "ASSUMPTION",
+    "todo": "Night-to-night variability."
+   },
+   "min_sd": {
+    "value": 0.3,
+    "unit": "h",
+    "source_title": "",
+    "source_url": "",
+    "status": "ASSUMPTION",
+    "todo": "Design choice."
+   },
+   "sim_min": {
+    "value": 0,
+    "unit": "h",
+    "source_title": "",
+    "source_url": "",
+    "status": "ASSUMPTION",
+    "todo": "Generator bound."
+   },
+   "sim_max": {
+    "value": 12,
+    "unit": "h",
+    "source_title": "",
+    "source_url": "",
+    "status": "ASSUMPTION",
+    "todo": "Generator bound."
+   }
+  },
+  "sleep_quality": {
+   "label": "Sleep quality (1-5)",
+   "domain": "behavioral",
+   "provenance": "SELF-REPORTED",
+   "worse_when": "low",
+   "sim_mean": {
+    "value": 4.0,
+    "unit": "score",
+    "source_title": "",
+    "source_url": "",
+    "status": "ASSUMPTION",
+    "todo": "Self-rating scale designed by us."
+   },
+   "sim_sd": {
+    "value": 0.5,
+    "unit": "score",
+    "source_title": "",
+    "source_url": "",
+    "status": "ASSUMPTION",
+    "todo": "Design choice."
+   },
+   "min_sd": {
+    "value": 0.4,
+    "unit": "score",
+    "source_title": "",
+    "source_url": "",
+    "status": "ASSUMPTION",
+    "todo": "Design choice."
+   },
+   "sim_min": {
+    "value": 1,
+    "unit": "score",
+    "source_title": "",
+    "source_url": "",
+    "status": "ASSUMPTION",
+    "todo": "Scale bound."
+   },
+   "sim_max": {
+    "value": 5,
+    "unit": "score",
+    "source_title": "",
+    "source_url": "",
+    "status": "ASSUMPTION",
+    "todo": "Scale bound."
+   }
+  },
+  "mood": {
+   "label": "Mood (1-5)",
+   "domain": "behavioral",
+   "provenance": "SELF-REPORTED",
+   "worse_when": "low",
+   "sim_mean": {
+    "value": 4.0,
+    "unit": "score",
+    "source_title": "",
+    "source_url": "",
+    "status": "ASSUMPTION",
+    "todo": "Self-rating scale designed by us; consider a validated instrument."
+   },
+   "sim_sd": {
+    "value": 0.5,
+    "unit": "score",
+    "source_title": "",
+    "source_url": "",
+    "status": "ASSUMPTION",
+    "todo": "Design choice."
+   },
+   "min_sd": {
+    "value": 0.4,
+    "unit": "score",
+    "source_title": "",
+    "source_url": "",
+    "status": "ASSUMPTION",
+    "todo": "Design choice."
+   },
+   "sim_min": {
+    "value": 1,
+    "unit": "score",
+    "source_title": "",
+    "source_url": "",
+    "status": "ASSUMPTION",
+    "todo": "Scale bound."
+   },
+   "sim_max": {
+    "value": 5,
+    "unit": "score",
+    "source_title": "",
+    "source_url": "",
+    "status": "ASSUMPTION",
+    "todo": "Scale bound."
+   }
+  },
+  "fatigue": {
+   "label": "Fatigue (1-5)",
+   "domain": "behavioral",
+   "provenance": "SELF-REPORTED",
+   "worse_when": "high",
+   "sim_mean": {
+    "value": 2.0,
+    "unit": "score",
+    "source_title": "",
+    "source_url": "",
+    "status": "ASSUMPTION",
+    "todo": "Self-rating scale designed by us."
+   },
+   "sim_sd": {
+    "value": 0.5,
+    "unit": "score",
+    "source_title": "",
+    "source_url": "",
+    "status": "ASSUMPTION",
+    "todo": "Design choice."
+   },
+   "min_sd": {
+    "value": 0.4,
+    "unit": "score",
+    "source_title": "",
+    "source_url": "",
+    "status": "ASSUMPTION",
+    "todo": "Design choice."
+   },
+   "sim_min": {
+    "value": 1,
+    "unit": "score",
+    "source_title": "",
+    "source_url": "",
+    "status": "ASSUMPTION",
+    "todo": "Scale bound."
+   },
+   "sim_max": {
+    "value": 5,
+    "unit": "score",
+    "source_title": "",
+    "source_url": "",
+    "status": "ASSUMPTION",
+    "todo": "Scale bound."
+   }
+  },
+  "pvt_mean_rt": {
+   "label": "Reaction time (PVT mean)",
+   "domain": "behavioral",
+   "provenance": "MEASURED",
+   "worse_when": "high",
+   "sim_mean": {
+    "value": 280,
+    "unit": "ms",
+    "source_title": "",
+    "source_url": "",
+    "status": "ASSUMPTION",
+    "todo": "Typical rested PVT mean RT; see Basner & Dinges 2011 (Sleep) - verify. Browser timing adds latency."
+   },
+   "sim_sd": {
+    "value": 20,
+    "unit": "ms",
+    "source_title": "",
+    "source_url": "",
+    "status": "ASSUMPTION",
+    "todo": "Day-to-day PVT variability."
+   },
+   "min_sd": {
+    "value": 10,
+    "unit": "ms",
+    "source_title": "",
+    "source_url": "",
+    "status": "ASSUMPTION",
+    "todo": "Design choice."
+   },
+   "sim_min": {
+    "value": 150,
+    "unit": "ms",
+    "source_title": "",
+    "source_url": "",
+    "status": "ASSUMPTION",
+    "todo": "Generator bound."
+   },
+   "sim_max": {
+    "value": 1000,
+    "unit": "ms",
+    "source_title": "",
+    "source_url": "",
+    "status": "ASSUMPTION",
+    "todo": "Generator bound."
+   }
+  },
+  "pvt_lapses": {
+   "label": "Attention lapses (PVT, RT > lapse threshold)",
+   "domain": "behavioral",
+   "provenance": "MEASURED",
+   "worse_when": "high",
+   "sim_mean": {
+    "value": 0.5,
+    "unit": "count",
+    "source_title": "",
+    "source_url": "",
+    "status": "ASSUMPTION",
+    "todo": "Rested lapse count per test; depends on test duration."
+   },
+   "sim_sd": {
+    "value": 0.7,
+    "unit": "count",
+    "source_title": "",
+    "source_url": "",
+    "status": "ASSUMPTION",
+    "todo": "Design choice."
+   },
+   "min_sd": {
+    "value": 0.7,
+    "unit": "count",
+    "source_title": "",
+    "source_url": "",
+    "status": "ASSUMPTION",
+    "todo": "Design choice (counts near zero need a floor)."
+   },
+   "sim_min": {
+    "value": 0,
+    "unit": "count",
+    "source_title": "",
+    "source_url": "",
+    "status": "ASSUMPTION",
+    "todo": "Generator bound."
+   },
+   "sim_max": {
+    "value": 20,
+    "unit": "count",
+    "source_title": "",
+    "source_url": "",
+    "status": "ASSUMPTION",
+    "todo": "Generator bound."
+   }
+  },
+  "symptom_count": {
+   "label": "Reported symptoms",
+   "domain": "immune",
+   "provenance": "SELF-REPORTED",
+   "worse_when": "high",
+   "sim_mean": {
+    "value": 0.2,
+    "unit": "count",
+    "source_title": "",
+    "source_url": "",
+    "status": "ASSUMPTION",
+    "todo": "Design choice for simulation."
+   },
+   "sim_sd": {
+    "value": 0.4,
+    "unit": "count",
+    "source_title": "",
+    "source_url": "",
+    "status": "ASSUMPTION",
+    "todo": "Design choice."
+   },
+   "min_sd": {
+    "value": 0.5,
+    "unit": "count",
+    "source_title": "",
+    "source_url": "",
+    "status": "ASSUMPTION",
+    "todo": "Design choice."
+   },
+   "sim_min": {
+    "value": 0,
+    "unit": "count",
+    "source_title": "",
+    "source_url": "",
+    "status": "ASSUMPTION",
+    "todo": "Generator bound."
+   },
+   "sim_max": {
+    "value": 10,
+    "unit": "count",
+    "source_title": "",
+    "source_url": "",
+    "status": "ASSUMPTION",
+    "todo": "Checklist length."
+   }
+  },
+  "wbc": {
+   "label": "White blood cell count",
+   "domain": "immune",
+   "provenance": "LAB-ENTERED",
+   "worse_when": "both",
+   "sparse": true,
+   "persistence": {
+    "value": 2,
+    "unit": "measurements",
+    "source_title": "",
+    "source_url": "",
+    "status": "ASSUMPTION",
+    "todo": "Labs are sparse (weekly), so 2 consecutive abnormal draws flag. Design choice."
+   },
+   "sim_mean": {
+    "value": 6.5,
+    "unit": "10^9/L",
+    "source_title": "",
+    "source_url": "",
+    "status": "ASSUMPTION",
+    "todo": "Adult WBC reference interval (~4-11). Verify."
+   },
+   "sim_sd": {
+    "value": 1.0,
+    "unit": "10^9/L",
+    "source_title": "",
+    "source_url": "",
+    "status": "ASSUMPTION",
+    "todo": "Within-person variability."
+   },
+   "min_sd": {
+    "value": 0.5,
+    "unit": "10^9/L",
+    "source_title": "",
+    "source_url": "",
+    "status": "ASSUMPTION",
+    "todo": "Design choice."
+   },
+   "sim_min": {
+    "value": 2,
+    "unit": "10^9/L",
+    "source_title": "",
+    "source_url": "",
+    "status": "ASSUMPTION",
+    "todo": "Generator bound."
+   },
+   "sim_max": {
+    "value": 15,
+    "unit": "10^9/L",
+    "source_title": "",
+    "source_url": "",
+    "status": "ASSUMPTION",
+    "todo": "Generator bound."
+   },
+   "abs_red_below": {
+    "value": 3.0,
+    "unit": "10^9/L",
+    "source_title": "",
+    "source_url": "",
+    "status": "ASSUMPTION",
+    "todo": "Leukopenia cut-off; find clinical reference."
+   },
+   "abs_red_above": {
+    "value": 12.0,
+    "unit": "10^9/L",
+    "source_title": "",
+    "source_url": "",
+    "status": "ASSUMPTION",
+    "todo": "Leukocytosis cut-off; find clinical reference."
+   },
+   "lab_interval_days": {
+    "value": 7,
+    "unit": "days",
+    "source_title": "",
+    "source_url": "",
+    "status": "ASSUMPTION",
+    "todo": "Simulation: one lab draw per week. Check ISS medical ops cadence."
+   }
+  },
+  "exercise_minutes": {
+   "label": "Exercise",
+   "domain": "bone",
+   "provenance": "SELF-REPORTED",
+   "worse_when": "low",
+   "assess": "adherence",
+   "sim_mean": {
+    "value": 110,
+    "unit": "min",
+    "source_title": "",
+    "source_url": "",
+    "status": "ASSUMPTION",
+    "todo": "Simulation only."
+   },
+   "sim_sd": {
+    "value": 15,
+    "unit": "min",
+    "source_title": "",
+    "source_url": "",
+    "status": "ASSUMPTION",
+    "todo": "Simulation only."
+   },
+   "min_sd": {
+    "value": 5,
+    "unit": "min",
+    "source_title": "",
+    "source_url": "",
+    "status": "ASSUMPTION",
+    "todo": "Unused for adherence; kept for schema."
+   },
+   "sim_min": {
+    "value": 0,
+    "unit": "min",
+    "source_title": "",
+    "source_url": "",
+    "status": "ASSUMPTION",
+    "todo": "Generator bound."
+   },
+   "sim_max": {
+    "value": 240,
+    "unit": "min",
+    "source_title": "",
+    "source_url": "",
+    "status": "ASSUMPTION",
+    "todo": "Generator bound."
+   }
+  }
+ },
+ "bone": {
+  "loss_rate_pct_per_month": {
+   "value": 1.0,
+   "unit": "%/month",
+   "source_title": "",
+   "source_url": "",
+   "status": "ASSUMPTION",
+   "todo": "Lead: LeBlanc et al. 2000 (J Musculoskelet Neuronal Interact) report ~1-1.5 %/month at hip/spine without countermeasures. Verify."
+  },
+  "exercise_effectiveness": {
+   "value": 0.5,
+   "unit": "fraction",
+   "source_title": "",
+   "source_url": "",
+   "status": "ASSUMPTION",
+   "todo": "Fraction of loss prevented at 100 % adherence. Lead: ARED studies (Smith et al. 2012). Highly uncertain."
+  },
+  "exercise_target_min": {
+   "value": 120,
+   "unit": "min/day",
+   "source_title": "",
+   "source_url": "",
+   "status": "ASSUMPTION",
+   "todo": "ISS crews reportedly schedule ~2 h/day exercise. Verify."
+  },
+  "adherence_amber_below": {
+   "value": 0.7,
+   "unit": "fraction",
+   "source_title": "",
+   "source_url": "",
+   "status": "ASSUMPTION",
+   "todo": "Design choice."
+  },
+  "adherence_red_below": {
+   "value": 0.3,
+   "unit": "fraction",
+   "source_title": "",
+   "source_url": "",
+   "status": "ASSUMPTION",
+   "todo": "Design choice."
+  },
+  "loss_amber_pct": {
+   "value": 4.0,
+   "unit": "%",
+   "source_title": "",
+   "source_url": "",
+   "status": "ASSUMPTION",
+   "todo": "Design choice; check NASA bone health standards (NASA-STD-3001)."
+  },
+  "loss_red_pct": {
+   "value": 8.0,
+   "unit": "%",
+   "source_title": "",
+   "source_url": "",
+   "status": "ASSUMPTION",
+   "todo": "Design choice; check NASA-STD-3001."
+  }
+ },
+ "radiation": {
+  "career_limit_msv": {
+   "value": 600,
+   "unit": "mSv",
+   "source_title": "",
+   "source_url": "",
+   "status": "ASSUMPTION",
+   "todo": "Lead: NASA-STD-3001 Vol 1 Rev B (2022) career effective dose limit 600 mSv. Verify."
+  },
+  "amber_fraction": {
+   "value": 0.5,
+   "unit": "fraction",
+   "source_title": "",
+   "source_url": "",
+   "status": "ASSUMPTION",
+   "todo": "Design choice: AMBER at 50 % of limit."
+  },
+  "red_fraction": {
+   "value": 0.8,
+   "unit": "fraction",
+   "source_title": "",
+   "source_url": "",
+   "status": "ASSUMPTION",
+   "todo": "Design choice: RED at 80 % of limit."
+  },
+  "spe_event_dose_msv": {
+   "value": 10,
+   "unit": "mSv",
+   "source_title": "",
+   "source_url": "",
+   "status": "ASSUMPTION",
+   "todo": "Simulated extra dose from one SPE when sheltered. Real SPE doses vary by orders of magnitude."
+  }
+ },
+ "missions": {
+  "iss": {
+   "label": "ISS (low Earth orbit)",
+   "one_way_delay_s": {
+    "value": 0.5,
+    "unit": "s",
+    "source_title": "",
+    "source_url": "",
+    "status": "ASSUMPTION",
+    "todo": "Relay latency via TDRS, sub-second. Verify."
+   },
+   "daily_dose_msv": {
+    "value": 0.5,
+    "unit": "mSv/day",
+    "source_title": "",
+    "source_url": "",
+    "status": "ASSUMPTION",
+    "todo": "Lead: ISS ~0.3-0.8 mSv/day depending on solar cycle. Verify."
+   }
+  },
+  "moon": {
+   "label": "Lunar surface",
+   "one_way_delay_s": {
+    "value": 1.3,
+    "unit": "s",
+    "source_title": "",
+    "source_url": "",
+    "status": "ASSUMPTION",
+    "todo": "Light time Earth-Moon ~1.28 s. Verify."
+   },
+   "daily_dose_msv": {
+    "value": 1.4,
+    "unit": "mSv/day",
+    "source_title": "",
+    "source_url": "",
+    "status": "ASSUMPTION",
+    "todo": "Lead: Chang'e-4 LND, Zhang et al. 2020 (Science Advances) ~1.37 mSv/day. Verify."
+   }
+  },
+  "mars_transit": {
+   "label": "Mars transit",
+   "one_way_delay_s": {
+    "value": 720,
+    "unit": "s",
+    "source_title": "",
+    "source_url": "",
+    "status": "ASSUMPTION",
+    "todo": "Real range ~3-22 min depending on geometry; 12 min chosen. Verify range."
+   },
+   "daily_dose_msv": {
+    "value": 1.8,
+    "unit": "mSv/day",
+    "source_title": "",
+    "source_url": "",
+    "status": "ASSUMPTION",
+    "todo": "Lead: Zeitlin et al. 2013 (Science), MSL RAD cruise ~1.84 mSv/day. Verify."
+   }
+  }
+ },
+ "demo": {
+  "time_acceleration": {
+   "value": 60,
+   "unit": "x",
+   "source_title": "",
+   "source_url": "",
+   "status": "ASSUMPTION",
+   "todo": "Not a physical value: demo speed-up for comms countdown. Always disclosed in UI."
+  }
+ },
+ "pvt": {
+  "lapse_ms": {
+   "value": 500,
+   "unit": "ms",
+   "source_title": "",
+   "source_url": "",
+   "status": "ASSUMPTION",
+   "todo": "Lead: Basner & Dinges 2011 (Sleep) define lapse as RT > 500 ms. Verify."
+  },
+  "min_valid_rt_ms": {
+   "value": 100,
+   "unit": "ms",
+   "source_title": "",
+   "source_url": "",
+   "status": "ASSUMPTION",
+   "todo": "Responses faster than this count as false starts. Verify against PVT literature."
+  },
+  "min_interval_ms": {
+   "value": 2000,
+   "unit": "ms",
+   "source_title": "",
+   "source_url": "",
+   "status": "ASSUMPTION",
+   "todo": "Inter-stimulus interval 2-10 s per brief. Verify."
+  },
+  "max_interval_ms": {
+   "value": 10000,
+   "unit": "ms",
+   "source_title": "",
+   "source_url": "",
+   "status": "ASSUMPTION",
+   "todo": "See min_interval_ms."
+  },
+  "demo_duration_s": {
+   "value": 60,
+   "unit": "s",
+   "source_title": "",
+   "source_url": "",
+   "status": "ASSUMPTION",
+   "todo": "Demo mode length (per brief)."
+  },
+  "standard_duration_s": {
+   "value": 180,
+   "unit": "s",
+   "source_title": "",
+   "source_url": "",
+   "status": "ASSUMPTION",
+   "todo": "Standard mode length (per brief). Note: lapse counts scale with duration; baseline lapses were simulated for roughly this length."
+  }
+ },
+ "space_weather": {
+  "lookback_days": {
+   "value": 30,
+   "unit": "days",
+   "source_title": "",
+   "source_url": "",
+   "status": "ASSUMPTION",
+   "todo": "How far back to ask NASA DONKI for FLR/SEP events. Design choice."
+  },
+  "cache_ttl_s": {
+   "value": 1800,
+   "unit": "s",
+   "source_title": "",
+   "source_url": "",
+   "status": "ASSUMPTION",
+   "todo": "Use cached feed younger than this (DEMO_KEY has a low rate limit). Design choice."
+  },
+  "timeout_s": {
+   "value": 4,
+   "unit": "s",
+   "source_title": "",
+   "source_url": "",
+   "status": "ASSUMPTION",
+   "todo": "Network timeout before falling back to cache/bundled sample. Design choice."
+  }
+ }
+}
